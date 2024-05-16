@@ -1,30 +1,18 @@
 import * as vscode from "vscode";
+import { disposable } from "./commands/helloWorld";
+import {
+  salaryStatusBarItem,
+  initStatusBarItem,
+} from "./views/salaryStatusBarItem";
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Congratulations, your extension "personalkit" is now active!');
-
-  let salary = 0;
-  let salaryStatusBarItem = vscode.window.createStatusBarItem(
-    vscode.StatusBarAlignment.Right,
-    100
-  );
-  salaryStatusBarItem.text = `当前薪资：${salary}`;
-  salaryStatusBarItem.show();
-  context.subscriptions.push(salaryStatusBarItem);
-
-  let disposable = vscode.commands.registerCommand(
-    "personalkit.helloWorld",
-    () => {
-      vscode.window.showInformationMessage("Hello World from PersonalKit!");
-    }
-  );
-
+  // 注册 helloWorld 命令
   context.subscriptions.push(disposable);
-  
-  setInterval(() => {
-    salary += 100; // 按照你的需求调整这个值
-    salaryStatusBarItem.text = `当前薪资：${salary}`;
-  }, 1000); // 按照你的需求调整这个值
+
+  //   初始化状态栏
+  initStatusBarItem();
+  //   注册状态栏
+  context.subscriptions.push(salaryStatusBarItem);
 }
 
 export function deactivate() {}

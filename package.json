@@ -19,7 +19,33 @@
         "command": "personalkit.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "个人工具箱",
+      "properties": {
+        "personalkit.salary.monthlySalary": {
+          "type": "number",
+          "default": 10000,
+          "description": "月薪"
+        },
+        "personalkit.salary.workStartTime": {
+          "type": "number",
+          "default": 9,
+          "description": "上班时间，以24小时制表示"
+        },
+        "personalkit.salary.workEndTime": {
+          "type": "number",
+          "default": 18,
+          "description": "下班时间，以24小时制表示"
+        },
+        "personalkit.salary.totalWorkDays": {
+          "type": "number",
+          "default": 22,
+          "description": "每月总工作天数"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

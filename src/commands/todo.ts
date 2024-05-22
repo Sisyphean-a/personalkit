@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { TodoDataProvider } from "../views/todoTreeView";
+import { TodoItem, TodoDataProvider } from "../views/todoTreeView";
 
 const todoDataProvider = new TodoDataProvider();
 
@@ -22,17 +22,12 @@ export let addTodoCommand = vscode.commands.registerCommand(
   addTodo
 );
 
-async function renameTodo() {
-  const oldTodo = await vscode.window.showInputBox({
-    prompt: "要重命名的todo",
+async function renameTodo(todo: TodoItem) {
+  const newTodo = await vscode.window.showInputBox({
+    prompt: "重命名todo",
   });
-  if (oldTodo) {
-    const newTodo = await vscode.window.showInputBox({
-      prompt: "重命名todo",
-    });
-    if (newTodo) {
-      todoDataProvider.renameTodo(oldTodo, newTodo);
-    }
+  if (newTodo) {
+    todoDataProvider.renameTodo(todo.label, newTodo);
   }
 }
 
@@ -41,13 +36,8 @@ export let renameTodoCommand = vscode.commands.registerCommand(
   renameTodo
 );
 
-async function deleteTodo() {
-  const todo = await vscode.window.showInputBox({
-    prompt: "新增todo",
-  });
-  if (todo) {
-    todoDataProvider.deleteTodo(todo);
-  }
+async function deleteTodo(todo: TodoItem) {
+  todoDataProvider.deleteTodo(todo.label);
 }
 
 export let deleteTodoCommand = vscode.commands.registerCommand(

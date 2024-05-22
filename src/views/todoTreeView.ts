@@ -16,6 +16,7 @@ export class TodoItem extends vscode.TreeItem {
     public readonly command?: vscode.Command
   ) {
     super(label, collapsibleState);
+    this.contextValue = "todoItem";
   }
 }
 

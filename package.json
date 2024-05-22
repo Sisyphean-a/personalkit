@@ -22,6 +22,20 @@
         }
       ]
     },
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "extension.deleteTodo",
+          "group": "1_modification",
+          "when": "view == todoTreeView && viewItem == todoItem"
+        },
+        {
+          "command": "extension.renameTodo",
+          "group": "1_modification",
+          "when": "view == todoTreeView && viewItem == todoItem"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "personalkit.helloWorld",

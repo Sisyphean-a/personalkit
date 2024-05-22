@@ -14,10 +14,30 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "todoTreeView",
+          "name": "TODO"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "personalkit.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "extension.addTodo",
+        "title": "Add TODO"
+      },
+      {
+        "command": "extension.deleteTodo",
+        "title": "Delete TODO"
+      },
+      {
+        "command": "extension.renameTodo",
+        "title": "Rename TODO"
       }
     ],
     "configuration": {
